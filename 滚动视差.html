@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动视差</title>
+    <style>
+        section{
+            height:100vh;
+        }
+        .g-img{
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: 0 0,100px 0,200px 0;
+            background-repeat: no-repeat;
+        }
+        .g1{
+             background-image: url("image/1.jpg");
+         }
+        .g2{
+            background-image: url("image/2.jpg");
+        }
+        .g3{
+            background-image: url("image/3.jpg");
+        }
+    </style>
+</head>
+<body>
+<section class="g-word">Header</section>
+<section class="g-img g1">IMG1</section>
+<section class="g-word">Content1</section>
+<section class="g-img g2">IMG2</section>
+<section class="g-word">Content2</section>
+<section class="g-img g3">IMG3</section>
+<section class="g-word">Footer</section>
+</body>
+</html>
