@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" ondragstart="return false">
+<head>
+    <meta charset="UTF-8">
+    <title>3d旋转相册</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: #000;
+            overflow: hidden;
+        }
+        #perspective{
+            perspective: 800px;/*景深*/
+
+        }
+        #wrap{
+            width:183px;
+            height:200px;
+            margin:175px auto;
+            transform-style: preserve-3d;/*3d视觉*/
+            transform: rotateX(-20deg) rotateY(0deg);/*旋转角度*/
+        }
+        #wrap img{
+            position: absolute;
+            width:183px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="perspective">
+    <div id="wrap">
+        <img src="image/p1.jpg"/>
+        <img src="image/p2.jpg"/>
+        <img src="image/p3.jpg"/>
+        <img src="image/p4.jpg"/>
+        <img src="image/p5.jpg"/>
+        <img src="image/p6.jpg"/>
+        <img src="image/p7.jpg"/>
+        <img src="image/p8.jpg"/>
+        <img src="image/p9.jpg"/>
+        <img src="image/p10.jpg"/>
+        <img src="image/p11.jpg"/>
+    </div>
+</div>
+<script>
+    /*
+       求每张图片旋转角度
+    */
+    var sum=document.getElementsByTagName("img");
+    var deg=360/sum.length;//图片单位旋转角度
+    /*
+       for循环给图片设置旋转角度
+
+    for (i=0;i<sum.length;i++){
+         sum[i].style.transform="rotateY("+i*deg+"deg) translateZ(350px)";
+    }
+    */
+    /*用call（）方法借foreach方法遍历*/
+    window.onload=function () {
+        [].forEach.call(sum,function (img, index) {
+            img.style.transform="rotateY("+index*deg+"deg) translateZ(350px)";
+            img.style.transition=(sum.length-index)*0.1+"s";
+        });
+    }
+    /*拖拽
+    * 从什么时候开始拖拽
+    * 鼠标按下  移动   松开
+    * 鼠标移动的距离  累加到》》相册旋转度数
+    * 当前移动位置-上一次位置=差
+    * */
+    var preX=0,preY=0,rotateX=0,rotateY=0;//上一次的位置
+    document.onmousedown=function (e) {
+            var e=e||window.event;//浏览器兼容处理
+            console.log(e.clientX,e.clientY);
+        this.onmousemove=function (e) {
+            var e=e||window.event;
+            var newX=e.clientX,newY=e.clientY;//当前移动位置
+
+            //todo方法  即将要做的 待更新的地方  假设知道上次的值
+            var minusX=newX-preX,minusY=newY-preY;
+            preX=newX;
+            preY=newY;
+            rotateX+=minusY;
+            rotateY+=minusX;
+            console.log(rotateX,rotateY);
+            document.getElementById("wrap").style.webkitTransform ="rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)";
+        }
+
+        this.onmouseup=function (e) {
+            var e=e||window.event;
+            this.onmousemove=null;//清空事件
+        }
+    }
+</script>
+</body>
+</html>
