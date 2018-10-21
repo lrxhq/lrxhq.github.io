@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格颜色分行</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            padding: 100px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        th{
+            padding: 15px 20px;
+            border-bottom: 1px solid #000000;
+        }
+        td{
+            padding: 15px 20px;
+        }
+        .w{
+        background:#aaa;
+        }
+        .t{
+            background: #eee;
+        }
+        .one{
+            background: orange;
+        }
+    </style>
+
+    <script src="jq/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("tbody>tr:odd").addClass("w");
+            $("tbody>tr:even").addClass("t");
+
+            $("tbody>tr").click(function () {
+               // $(this).addClass("one").end()
+                   $(this).find("[name='t']:radio").prop("checked",true).end()
+                       .addClass("one").siblings().removeClass("one")
+                   ;
+                 // alert($(this).text());
+            });
+            $("tbody>tr").dblclick(function () {
+                $(this).find("[name='t']:radio").prop("checked",false).end()
+                    .removeClass("one")
+                ;
+            });
+            /*$("tbody>tr").click(function () {
+                if($(this).hasClass("one")){
+                    $(this).removeClass("one")
+                        .find("[name='t']:checkbox").prop("checked",false);
+                }else{
+                    $(this).addClass("one")
+                        .find("[name='t']:checkbox").prop("checked",true);
+                    // alert($(this).text());
+                }
+            });*/
+
+        })
+    </script>
+</head>
+<body>
+<table>
+    <thead>
+    <tr><th>选择</th><th>周表</th><th>时间</th><th>地点</th></tr>
+    </thead>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Monday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Tuesday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Wednesday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Thursday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Friday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Saturday</td><td>2018</td><td>china</td></tr>
+    <tr><td><input type="radio" name="t" value=""/></td><td>Sunday</td><td>2018</td><td>china</td></tr>
+</table>
+</body>
+</html>
