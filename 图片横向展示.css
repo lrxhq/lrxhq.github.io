@@ -1,0 +1,77 @@
+*{margin:0;padding:0;}
+body{
+    font-size:12px;
+    font-family: "宋体";
+    padding: 100px;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    text-decoration: underline;
+    color: #ff4000;
+}
+h1{
+    font-size: 14px;
+}
+img{
+    width: 120px;
+    height: 160px;
+}
+.a1{
+    border: 1px solid #eeeeee;
+    width: 595px;
+}
+.a2{
+    background: #cccccc;
+    line-height: 30px;
+    height: 30px;
+}
+.a2 h1{
+    font-size: 12px;
+    padding-left: 10px;
+    float: left;
+}
+.a3{
+    margin: 14px 0 0 10px;
+    float: left;
+}
+.a3 span{
+    width: 7px;
+    height: 7px;
+    background: #aaaaaa;
+    text-indent: -9999px;
+    float: left;
+    margin-left: 5px;
+}
+.a3 span.one{
+    background: orangered;
+}
+.a4{
+    float: left;
+    margin-left: 10px;
+}
+.a2 em{
+    float:right;
+    margin: 5px 15px 0 0;
+}
+.a5{
+    width: 592px;
+    height: 210px;
+    overflow: hidden;
+    border-top: none;
+    position: relative;
+}
+.a5 ul li{
+    float: left;
+    margin:1px 2px;
+    list-style-type: none;
+    padding: 12px;
+}
+.a6{
+    position: absolute;
+    width: 2600px;
+    top:0;
+    left: 0;
+}
