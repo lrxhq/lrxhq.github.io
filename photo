@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+         *{
+             margin: 0;
+             padding: 0;
+         }
+        #box{
+            width:590px;
+            height:470px;
+            border: 1px solid #aaaaaa;
+            margin: 100px auto;
+            padding: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        #box ul,ol{list-style-type: none;}
+         #box ol{
+             position: absolute;
+             right:10px;
+             bottom: 5px;
+         }
+        #box ol li{
+            float: left;
+            margin:5px;
+            border: 1px solid #cccccc;
+            width: 20px;
+            height:20px;
+            text-align: center;
+            background: #ff4000;
+            color: #fff;
+            border-radius: 10px;
+        }
+        #box ol li.current{
+            background: #ff8000;
+        }
+        #pre,#next{
+            width:25px;
+            height:30px;
+            background: #FFFFFF;
+            opacity: 0.5;
+            position: absolute;
+            text-align: center;
+            line-height: 30px;
+        }
+        #pre{
+            left:0px;
+            top:210px;
+        }
+        #next{
+            right:0;
+            top:210px;
+        }
+    </style>
+    <script src="jq/jquery.min.js"></script>
+    <script>
+        $(function () {
+           var l= $("#box ol li");
+           var timer;
+           //点击轮播
+           l.mouseover(function () {
+               var index=$(this).index();
+               $("#box ul li").eq(index).fadeIn(300).siblings().hide();
+               $(this).addClass("current").siblings().removeClass('current');
+           });
+           //自动轮播
+           var num=0;
+            timer=setInterval(function () {
+               num++;
+               if(num>4){
+                   num=0;
+               }
+               $("#box ul li").eq(num).fadeIn(300).siblings().hide();
+               l.eq(num).addClass("current").siblings().removeClass("current");
+           },2000)
+            //鼠标悬停时，自动轮播停止，离开继续轮播
+            $("#box").hover(function () {
+                clearInterval(timer);
+            },function () {
+                clearInterval(timer);
+                timer=setInterval(function () {
+                    num++;
+                    if(num>4){
+                        num=0;
+                    }
+                    $("#box ul li").eq(num).fadeIn(300).siblings().hide();
+                    l.eq(num).addClass("current").siblings().removeClass("current");
+                },2000)
+            });
+            var pre=function () {
+                num--;
+                if(num<0){
+                    num=4;
+                }
+                $("#box ul li").eq(num).fadeIn(300).siblings().hide();
+                l.eq(num).addClass("current").siblings().removeClass("current");
+            }
+            var next=function () {
+                num++;
+                if(num>4){
+                    num=0;
+                }
+                $("#box ul li").eq(num).fadeIn(300).siblings().hide();
+                l.eq(num).addClass("current").siblings().removeClass("current");
+            }
+            $("#pre").click(pre);
+            $("#next").click(next);
+        })
+    </script>
+</head>
+<body>
+  <div id="box">
+      <ul>
+          <li><img src="image/l1.jpg"/></li>
+          <li><img src="image/l2.jpg"/></li>
+          <li><img src="image/l3.jpg"/></li>
+          <li><img src="image/l4.jpg"/></li>
+          <li><img src="image/l5.jpg"/></li>
+      </ul>
+      <ol>
+          <li class="current">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+      </ol>
+      <div id="pre">《</div>
+      <div id="next">》</div>
+  </div>
+</body>
+</html>
