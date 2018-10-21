@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>级联菜单</title>
+    <style>
+        #container{
+        }
+        #container ul{
+            list-style-type: none;
+        }
+        .mu li{
+            float: left;
+            position: relative;
+            border: 1px solid #cccccc;
+            width: 190px;
+            text-align: center;
+        }
+        .mu li a{
+            text-decoration: none;
+            color:#000;
+            display: block;
+            margin: 0 20px;
+            padding: 3px 5px;
+        }
+        .mu li ul{
+            position: absolute;
+            display: none;
+        }
+        .ck{
+            background: #A1AFB9;
+        }
+    </style>
+    <script src="jq/jquery.min.js"></script>
+    <script>
+       $(function () {
+          $(".mu li").hover(function () {
+              $(this).children("ul").show();
+              $(this).addClass("ck").siblings().removeClass("ck");
+          },function () {
+              $(this).children("ul").hide();
+              $(this).removeClass("ck").siblings().removeClass("ck");
+          });
+       });
+    </script>
+</head>
+<body>
+   <div id="container">
+       <ul class="mu">
+           <li><a href="#">男鞋</a>
+               <ul class="zi">
+                   <li><a href="#">男鞋</a>
+                       <ul class="sun">
+                           <li><a href="#">男鞋</a></li>
+                           <li><a href="#">男裤</a></li>
+                           <li><a href="#">女鞋</a></li>
+                           <li><a href="#">女裤</a></li>
+                           <li><a href="#">女生外套</a></li>
+                       </ul>
+                   </li>
+                   <li><a href="#">男裤</a></li>
+                   <li><a href="#">女鞋</a></li>
+                   <li><a href="#">女裤</a></li>
+                   <li><a href="#">女生外套</a>
+                       <ul class="sun">
+                           <li><a href="#">男鞋</a></li>
+                           <li><a href="#">男裤</a></li>
+                           <li><a href="#">女鞋</a></li>
+                           <li><a href="#">女裤</a></li>
+                           <li><a href="#">女生外套</a></li>
+                       </ul>
+                   </li>
+               </ul>
+           </li>
+           <li><a href="#">男裤</a>
+               <ul class="sun">
+                   <li><a href="#">男鞋</a></li>
+                   <li><a href="#">男裤</a></li>
+                   <li><a href="#">女鞋</a></li>
+                   <li><a href="#">女裤</a></li>
+                   <li><a href="#">女生外套</a></li>
+               </ul>
+           </li>
+           <li><a href="#">女鞋</a>
+               <ul class="sun">
+                   <li><a href="#">男鞋</a></li>
+                   <li><a href="#">男裤</a></li>
+                   <li><a href="#">女鞋</a></li>
+                   <li><a href="#">女裤</a></li>
+                   <li><a href="#">女生外套</a></li>
+               </ul>
+           </li>
+           <li><a href="#">女裤</a>
+               <ul class="sun">
+                   <li><a href="#">男鞋</a></li>
+                   <li><a href="#">男裤</a></li>
+                   <li><a href="#">女鞋</a></li>
+                   <li><a href="#">女裤</a></li>
+                   <li><a href="#">女生外套</a></li>
+               </ul>
+           </li>
+           <li><a href="#">女生外套</a>
+               <ul class="sun">
+                   <li><a href="#">男鞋</a></li>
+                   <li><a href="#">男裤</a></li>
+                   <li><a href="#">女鞋</a></li>
+                   <li><a href="#">女裤</a></li>
+                   <li><a href="#">女生外套</a></li>
+               </ul>
+           </li>
+       </ul>
+   </div>
+</body>
+</html>
