@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页换肤</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            padding: 100px;
+        }
+        ul{
+            list-style-type: none;
+        }
+        li{
+            float: left;
+            margin-left: 5px;
+        }
+        #one{
+            border: 10px solid red;
+        }
+        #two{
+            border: 10px solid greenyellow;
+        }
+        #three{
+            border: 10px solid blue;
+        }
+        .skin{
+            width: 600px;
+            height: 500px;
+            border: 1px solid #cccccc;
+            margin-top: 30px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="one.css" id="sk"/>
+    <script src="jq/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("li").click(function () {
+                $("#sk").attr("href",this.id+".css");
+            });
+        })
+    </script>
+</head>
+<body>
+<ul>
+    <li id="one"></li>
+    <li id="two"></li>
+    <li id="three"></li>
+</ul>
+<div class="skin"></div>
+</body>
+</html>
